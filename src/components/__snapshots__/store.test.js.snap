@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`store snapshot matches 1`] = `
+<React.Fragment>
+  <div
+    dispatch={[Function]}
+    key=".0"
+    state={Object {}}
+  />
+</React.Fragment>
+`;
