@@ -1,4 +1,4 @@
-function create (start, end, step) {
+export function create (start, end, step) {
 	function * generator (start, end, step) {
 		let i = start
 		while (i <= end) {
@@ -13,6 +13,7 @@ function create (start, end, step) {
 		}))
 }
 
-export default {
-	create
+export function normalize (dist) {
+	const sum = dist.reduce((sum, curr) => sum + curr.prob, 0)
+	return dist.map(o => ({...o, prob: o.prob / sum}))
 }
