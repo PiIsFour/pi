@@ -1,7 +1,8 @@
 {
   "name": "pi",
   "version": "0.1.0",
-  "private": true,
+	"private": true,
+	"homepage": "https://PiIsFour.github.io/pi/",
   "dependencies": {
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
