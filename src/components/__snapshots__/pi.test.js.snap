@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pi snapshot matches 1`] = `
+<div
+  id="pi"
+  style={
+    Object {
+      "display": "grid",
+      "gridGap": "10px",
+      "gridTemplateColumns": "repeat(auto-fit, minmax(200px, 1fr))",
+    }
+  }
+>
+  <Card
+    style={
+      Object {
+        "textAlign": "center",
+      }
+    }
+  >
+    <a
+      className="button"
+      onClick={[Function]}
+    >
+      Start
+    </a>
+  </Card>
+</div>
+`;
