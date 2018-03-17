@@ -44,3 +44,9 @@ export function interval (dist, minProb) {
 		.sort((first, second) => first.prob < second.prob)
 		.sort((first, second) => first.end - first.start > second.end - second.start)[0]
 }
+
+export default {
+	create,
+	normalize,
+	interval
+}
