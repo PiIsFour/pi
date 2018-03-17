@@ -1,5 +1,8 @@
 import React from 'react'
 import Store from './store'
+import reducerFactory from './pi.reducer'
+import {create} from './pi.actions'
+import dist from '../model/dist'
 
 function Card ({children, width = 1, height = 1, style = {}}) {
 	return <div style={{
@@ -13,20 +16,20 @@ function Card ({children, width = 1, height = 1, style = {}}) {
 	</div>
 }
 
-export function Pi () {
+export function Pi ({state, dispatch}) {
 	return <div id="pi" style={{
 		display: 'grid',
 		gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
 		gridGap: '10px'
 	}}>
-		<Card style={{textAlign: 'center'}}>
-			<a className="button">Start</a>
-		</Card>
+		{!state && <Card style={{textAlign: 'center'}}>
+			<a className="button" onClick={() => dispatch(create())}>Start</a>
+		</Card>}
 	</div>
 }
 
 export default function () {
-	return <Store reducer={() => {}}>
+	return <Store reducer={reducerFactory(dist)}>
 		<Pi />
 	</Store>
 }

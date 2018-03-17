@@ -20,6 +20,7 @@ exports[`pi snapshot matches 1`] = `
   >
     <a
       className="button"
+      onClick={[Function]}
     >
       Start
     </a>

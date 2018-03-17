@@ -15,4 +15,11 @@ describe('pi', () => {
 		expect(wrapper.find('.button')).toExist()
 		expect(wrapper.find('.button')).toHaveText('Start')
 	})
+
+	it('dispaches the create action when start button is clicked', () => {
+		const mockDispatch = jest.fn()
+		const wrapper = shallow(<Pi dispatch={mockDispatch}/>)
+		wrapper.find('.button').simulate('click')
+		expect(mockDispatch).toBeCalledWith({type: 'CREATE'})
+	})
 })
