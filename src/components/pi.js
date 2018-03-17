@@ -34,6 +34,8 @@ function showNodes (nodes) {
 		switch (node.type) {
 		case 'DIST':
 			return showDist(node.dist, index)
+		default:
+			return null
 		}
 	})
 }
