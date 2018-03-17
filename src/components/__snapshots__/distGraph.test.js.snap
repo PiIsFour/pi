@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`distGraph snapshot matches 1`] = `
+<svg
+  viewBox="-10 -5 220 110"
+>
+  <path
+    d="M 0 50 L 60 0 L 200 50"
+    fill="transparent"
+    stroke="black"
+    stroke-width="0.5"
+  />
+</svg>
+`;
