@@ -22,4 +22,13 @@ describe('pi', () => {
 		wrapper.find('.button').simulate('click')
 		expect(mockDispatch).toBeCalledWith({type: 'CREATE'})
 	})
+
+	it('shows distGraph when it has a dist node', () => {
+		const state = {nodes: [
+			{type: 'DIST', dist: 'TestObject'}
+		]}
+		const wrapper = shallow(<Pi state={state}/>)
+		expect(wrapper.find('DistGraph')).toExist()
+		expect(wrapper.find('DistGraph')).toHaveProp('dist', state.nodes[0].dist)
+	})
 })

@@ -8,7 +8,7 @@ exports[`distGraph snapshot matches 1`] = `
     d="M 0 50 L 60 0 L 200 50"
     fill="transparent"
     stroke="black"
-    stroke-width="0.5"
+    strokeWidth="0.5"
   />
 </svg>
 `;

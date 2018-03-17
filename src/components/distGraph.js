@@ -18,6 +18,6 @@ export default function DistGraph ({dist}) {
 	})()
 	return <svg viewBox="-10 -5 220 110">
 		<path d={dist.reduce((output, curr) => output + command.next().value + (curr.param / (max - min) * 200) + ' ' + (100 - curr.prob / top * 100), '')}
-			fill="transparent" stroke="black" stroke-width="0.5" />
+			fill="transparent" stroke="black" strokeWidth="0.5" />
 	</svg>
 }
