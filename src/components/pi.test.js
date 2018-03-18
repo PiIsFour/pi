@@ -27,8 +27,21 @@ describe('pi', () => {
 		const state = {nodes: [
 			{type: 'DIST', dist: 'TestObject'}
 		]}
-		const wrapper = shallow(<Pi state={state}/>)
+		const wrapper = shallow(<Pi state={state} interval={() => ({})}/>)
 		expect(wrapper.find('DistGraph')).toExist()
 		expect(wrapper.find('DistGraph')).toHaveProp('dist', state.nodes[0].dist)
+	})
+
+	it('shows a numerical range for pi', () => {
+		const state = {nodes: [
+			{type: 'DIST', dist: 'TestObject'}
+		]}
+		const mockInterval = jest.fn().mockReturnValue({start: 0.2, end: 6.899})
+		const wrapper = shallow(<Pi state={state} interval={mockInterval}/>)
+		expect(mockInterval).toBeCalledWith(state.nodes[0].dist, 0.95)
+		expect(wrapper.find('.range-start')).toExist()
+		expect(wrapper.find('.range-end')).toExist()
+		expect(wrapper.find('.range-start')).toIncludeText('0')
+		expect(wrapper.find('.range-end')).toIncludeText('7')
 	})
 })

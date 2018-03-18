@@ -2,7 +2,7 @@ import React from 'react'
 import Store from './store'
 import reducerFactory from './pi.reducer'
 import {create} from './pi.actions'
-import dist from '../model/dist'
+import dist, {interval} from '../model/dist'
 import DistGraph from './distGraph'
 
 function Card ({children, width = 1, height = 1, style = {}}) {
@@ -11,7 +11,11 @@ function Card ({children, width = 1, height = 1, style = {}}) {
 		gridColumn: 'span ' + width,
 		gridRow: 'span ' + height,
 		backgroundColor: '#424242',
-		boxShadow: '2px 2px 5px 0px #000000'
+		boxShadow: '2px 2px 5px 0px #000000',
+		display: 'flex',
+		flexDirection: 'column',
+		justifyContent: 'space-evenly',
+		alignItems: 'center'
 	}}>
 		{children}
 	</div>
@@ -29,30 +33,41 @@ function showDist (dist, key) {
 	</Card>
 }
 
-function showNodes (nodes) {
+function showResult (interval, dist, key) {
+	let {start, end} = interval(dist, 0.95)
+	const precision = -Math.floor(Math.log10(end - start))
+	start = Math.floor(start * 10 ** precision) * 10 ** -precision
+	end = Math.ceil(end * 10 ** precision) * 10 ** -precision
+	return <Card key={'result' + key}>
+		<div className="range-start">{start}</div>
+		<div className="range-end">{end}</div>
+	</Card>
+}
+
+function showNodes (interval, nodes) {
 	return nodes.map((node, index) => {
 		switch (node.type) {
 		case 'DIST':
-			return showDist(node.dist, index)
+			return [showDist(node.dist, index), showResult(interval, node.dist, index)]
 		default:
 			return null
 		}
 	})
 }
 
-export function Pi ({state, dispatch}) {
+export function Pi ({state, dispatch, interval}) {
 	return <div id="pi" style={{
 		display: 'grid',
 		gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
 		gridGap: '10px'
 	}}>
 		{!state && showStartButton(dispatch)}
-		{state && state.nodes && showNodes(state.nodes)}
+		{state && state.nodes && showNodes(interval, state.nodes)}
 	</div>
 }
 
 export default function () {
 	return <Store reducer={reducerFactory(dist)}>
-		<Pi />
+		<Pi interval={interval}/>
 	</Store>
 }
