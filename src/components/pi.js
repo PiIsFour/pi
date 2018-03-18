@@ -22,8 +22,14 @@ function Card ({children, width = 1, height = 1, style = {}}) {
 }
 
 function showStartButton (dispatch) {
-	return <Card style={{textAlign: 'center'}}>
+	return <Card>
 		<a className="button" onClick={() => dispatch(create())}>Start</a>
+	</Card>
+}
+
+function showContinueButton () {
+	return <Card>
+		<a className="button">Continue</a>
 	</Card>
 }
 
@@ -63,6 +69,7 @@ export function Pi ({state, dispatch, interval}) {
 	}}>
 		{!state && showStartButton(dispatch)}
 		{state && state.nodes && showNodes(interval, state.nodes)}
+		{state && state.nodes && showContinueButton()}
 	</div>
 }
 

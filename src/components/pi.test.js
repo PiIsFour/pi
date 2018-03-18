@@ -44,4 +44,13 @@ describe('pi', () => {
 		expect(wrapper.find('.range-start')).toIncludeText('0')
 		expect(wrapper.find('.range-end')).toIncludeText('7')
 	})
+
+	it('shows continue button if it has a state', () => {
+		const state = {nodes: [
+			{type: 'DIST', dist: 'TestObject'}
+		]}
+		const wrapper = shallow(<Pi state={state} interval={() => ({})}/>)
+		expect(wrapper.find('.button')).toExist()
+		expect(wrapper.find('.button')).toHaveText('Continue')
+	})
 })

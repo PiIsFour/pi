@@ -11,13 +11,7 @@ exports[`pi snapshot matches 1`] = `
     }
   }
 >
-  <Card
-    style={
-      Object {
-        "textAlign": "center",
-      }
-    }
-  >
+  <Card>
     <a
       className="button"
       onClick={[Function]}
