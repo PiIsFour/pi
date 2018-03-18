@@ -1,7 +1,7 @@
 import React from 'react'
 import Store from './store'
 import reducerFactory from './pi.reducer'
-import {create} from './pi.actions'
+import {create, addRndData} from './pi.actions'
 import dist, {interval} from '../model/dist'
 import DistGraph from './distGraph'
 
@@ -27,9 +27,9 @@ function showStartButton (dispatch) {
 	</Card>
 }
 
-function showContinueButton () {
+function showContinueButton (dispatch) {
 	return <Card>
-		<a className="button">Continue</a>
+		<a className="button" onClick={() => dispatch(addRndData())}>Continue</a>
 	</Card>
 }
 
@@ -69,7 +69,7 @@ export function Pi ({state, dispatch, interval}) {
 	}}>
 		{!state && showStartButton(dispatch)}
 		{state && state.nodes && showNodes(interval, state.nodes)}
-		{state && state.nodes && showContinueButton()}
+		{state && state.nodes && showContinueButton(dispatch)}
 	</div>
 }
 

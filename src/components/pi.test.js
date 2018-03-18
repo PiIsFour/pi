@@ -53,4 +53,14 @@ describe('pi', () => {
 		expect(wrapper.find('.button')).toExist()
 		expect(wrapper.find('.button')).toHaveText('Continue')
 	})
+
+	it('dispaches the addRndData action when continue button is clicked', () => {
+		const mockDispatch = jest.fn()
+		const state = {nodes: [
+			{type: 'DIST', dist: 'TestObject'}
+		]}
+		const wrapper = shallow(<Pi dispatch={mockDispatch} state={state} interval={() => ({})}/>)
+		wrapper.find('.button').simulate('click')
+		expect(mockDispatch).toBeCalledWith({type: 'ADDRNDDATA'})
+	})
 })
